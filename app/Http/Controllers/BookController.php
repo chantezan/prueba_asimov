@@ -15,8 +15,16 @@ class BookController extends Controller
    */
   public function store(Request $request)
   {
+    $validatedData = $request->validate([
+        'name' => 'required',
+        'last_name' => 'required',
+        'date' => 'required',
+        'email' => 'required|email|max:255',
+    ]);
       $book = new Book($request->all());
+
       if(!$book->save()){
+
         return Response('',400);
       }
       return response()->json($book, 200);
@@ -40,6 +48,9 @@ class BookController extends Controller
    */
   public function edit(Request $request)
   {
+    $validatedData = $request->validate([
+        'id' => 'required',
+    ]);
     $book = Book::find($request->id);
     $book->fill($request->all());
     if(!$book->save()){

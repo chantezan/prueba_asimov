@@ -6,10 +6,11 @@ use App\Book;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class ExampleTest extends TestCase
 {
+  use WithoutMiddleware;
   use DatabaseTransactions;
     /**
      * A basic test example.
@@ -23,8 +24,9 @@ class ExampleTest extends TestCase
             'name' => 'name',
             'last_name' => 's',
             'phone' => '123',
-            'email' => 'sadsd'];
+            'email' => 'sadsd@asd.com'];
         $response = $this->post('/save_book',$datos);
+        //dd($response);
         $response->assertStatus(400);
 
 
@@ -33,7 +35,7 @@ class ExampleTest extends TestCase
           'name' => 'name',
           'last_name' => 's',
           'phone' => '123',
-          'email' => 'sadsd'];
+          'email' => 'sadsd@asd.com'];
       $response = $this->post('/save_book',$datos);
       $response->assertStatus(200);
 
@@ -41,7 +43,7 @@ class ExampleTest extends TestCase
           'name' => 'name',
           'last_name' => 's',
           'phone' => '123',
-          'email' => 'sadsd'];
+          'email' => 'sadsd@asd.com'];
       $response = $this->post('/save_book',$datos);
       $response->assertStatus(400);
     }
@@ -52,7 +54,7 @@ class ExampleTest extends TestCase
         'name' => 'name',
         'last_name' => 's',
         'phone' => '123',
-        'email' => 'sadsd'];
+        'email' => 'sadsd@asd.com'];
     $response = $this->post('/save_book', $datos);
     $response->assertStatus(200);
 
@@ -60,7 +62,7 @@ class ExampleTest extends TestCase
         'name' => 'name',
         'last_name' => 's',
         'phone' => '123',
-        'email' => 'sadsd'];
+        'email' => 'sadsd@asd.com'];
     $response = $this->post('/save_book', $datos);
     $response->assertStatus(200);
 
@@ -72,7 +74,7 @@ class ExampleTest extends TestCase
         'name' => 'name',
         'last_name' => 's',
         'phone' => '123',
-        'email' => 'sadsd'];
+        'email' => 'sadsd@asd.com'];
     $response = $this->post('/save_book',$datos);
     $response->assertStatus(400);
 
@@ -80,7 +82,7 @@ class ExampleTest extends TestCase
         'name' => 'name',
         'last_name' => 's',
         'phone' => '123',
-        'email' => 'sadsd'];
+        'email' => 'sadsd@asd.com'];
     $response = $this->post('/save_book',$datos);
     $response->assertStatus(400);
 
@@ -88,7 +90,7 @@ class ExampleTest extends TestCase
         'name' => 'name',
         'last_name' => 's',
         'phone' => '123',
-        'email' => 'sadsd'];
+        'email' => 'sadsd@asd.com'];
     $response = $this->post('/save_book',$datos);
     $response->assertStatus(200);
   }
@@ -100,7 +102,7 @@ class ExampleTest extends TestCase
         'name' => 'name',
         'last_name' => 's',
         'phone' => '123',
-        'email' => 'sadsd'];
+        'email' => 'sadsd@asd.com'];
     $response = $this->post('/save_book',$datos);
     $response->assertStatus(400);
   }
@@ -110,15 +112,15 @@ class ExampleTest extends TestCase
         'name' => 'name',
         'last_name' => 's',
         'phone' => '123',
-        'email' => 'sadsd'];
+        'email' => 'sadsd@asd.com'];
     $response = $this->post('/save_book',$datos);
     $response->assertStatus(400);
   }
 
 
   public function testShowBook(){
-    $datos = ['from' => '2019-01-01',
-        'to' => '2019-12-01'];
+    $datos = ['from' => '2019-02-01',
+        'to' => '2019-02-02'];
     $response = $this->post('/show',$datos);
     $contenido = $response->getContent();
     $contenido = json_decode($contenido);
@@ -130,7 +132,7 @@ class ExampleTest extends TestCase
         'name' => 'name',
         'last_name' => 's',
         'phone' => '123',
-        'email' => 'sadsd'];
+        'email' => 'sadsd@asd.com'];
     $response = $this->post('/save_book',$datos);
     $response->assertStatus(200);
     $contenido = $response->getContent();
@@ -159,7 +161,7 @@ class ExampleTest extends TestCase
         'name' => 'name',
         'last_name' => 's',
         'phone' => '123',
-        'email' => 'sadsd'];
+        'email' => 'sadsd@asd.com'];
     $response = $this->post('/save_book',$datos);
     $response->assertStatus(200);
     $contenido = $response->getContent();

@@ -10,12 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::group(['middleware' => ['cors']],function(){
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('/save_book','BookController@store');
-Route::post('/show','BookController@show');
-Route::post('/edit','BookController@edit');
-Route::post('/delete_book','BookController@delete');
-Route::get('/hola','BookController@index');
+
+  Route::get('/hola', function () {
+    return "ble";
+  });
+  Route::post('/save_book','BookController@store');
+  Route::post('/show','BookController@show');
+  Route::post('/edit','BookController@edit');
+  Route::post('/delete_book','BookController@delete');
+
+}
+);
