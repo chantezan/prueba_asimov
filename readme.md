@@ -5,7 +5,7 @@ Se debe tener instalado php 7, node y composer
 3. composer install
 4. php artisan migrate --seed // esto genera las tablas y crea el schedule
 5. npm install
-5. npm run watch //para generar app.js
+5. npm run production //para generar app.js en modo deploy o usar npm run watch en desarrollo
 
 Solo se puede agendar para el año 2019, mediante el cliente web solo se puede agendar 
 por bloques de 1 hora desde las 9 hasta las 5, si quiere otra combinacion de horas se puede
