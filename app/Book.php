@@ -20,6 +20,7 @@ class Book extends Model
 
       $end_hour = (new DateTime($this->date))->modify('+1 hours')->format('Y-m-d G:i');
       $previous_hour = (new DateTime($this->date))->modify('-1 hours')->format('Y-m-d G:i');
+      //se verifica que no intersecte con ninguna otra reserva
       $books_aux = $this->where([['date','<',$end_hour],['date','>',$previous_hour]])->count();
       if($books_aux > 0 ) {
         if($this->id != null){
@@ -33,6 +34,7 @@ class Book extends Model
       $day = (new DateTime($this->date))->format('w');
       $hour_date_start = (new DateTime($this->date))->format('G:i');
       $hour_date_end = (new DateTime($this->date))->modify('+1 hours')->format('G:i');
+      //se verifica que contenga un schedule
       $sche_aux = Schedule::whereDate('start_date','<=',$this->date)->whereDate('end_date','>=',$this->date)
           ->whereTime('end_hour','>=',$hour_date_end)->whereTime('start_hour','<=',$hour_date_start)
           ->where('day',$day)->count();

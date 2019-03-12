@@ -16,7 +16,7 @@
 
 
         <div id="app" >
-                    <example-component></example-component>
+                    <calendario></calendario>
         </div>
         <script src="{{ URL::asset('js/app.js')}}"></script>
     </body>

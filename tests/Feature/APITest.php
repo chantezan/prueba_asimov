@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
-class ExampleTest extends TestCase
+class APITest extends TestCase
 {
   use WithoutMiddleware;
   use DatabaseTransactions;
@@ -17,7 +17,7 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
+    public function testSaveBook()
     {
 
         $datos = ['date' => '2019-02-01 16:40',

@@ -1,9 +1,8 @@
 <template>
     <div class="container text-center">
         <div class="row">
-            <div class="col-md-6 col-md-offset-4">
+            <div class="">
                     <datepicker :monday-first="true" @selected="selected" :disabledDates="disabledDates" :language="es" :inline="true"></datepicker>
-
                 <h4>Ingrese sus datos</h4>
                 <form ref="form" v-on:submit.prevent>
                     <div class="form-row">
@@ -81,10 +80,11 @@
         selected : function(e) {
           let self = this;
           var dateFormat = require('dateformat');
-            var start_date = dateFormat(e, "yyyy-mm-dd")
+          let date_aux = new Date(e.getTime());
+            var start_date = dateFormat(date_aux, "yyyy-mm-dd");
           this.date_selected = start_date;
-          e.setDate(e.getDate() + 1);
-          var end_date = dateFormat(e, "yyyy-mm-dd")
+          date_aux.setDate(date_aux.getDate() + 1);
+          var end_date = dateFormat(date_aux, "yyyy-mm-dd");
           axios.post('/prueba_asimov/public/show',{to:end_date,from:start_date})
               .then(function (response) {
                 console.log(response.data);
